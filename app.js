@@ -10,6 +10,7 @@ var usersRouter = require('./routes/users');
 var securityRouter = require('./routes/security');
 var restApi = require('./routes/restapi');
 var graphQl = require('./routes/graphql');
+var serverEvent = require('./routes/serverevents');
 // var ApolloServer = require('@apollo/server');
 // startStandaloneServer = require('@apollo/server/standalone');
 // typeDefs = require('./routes/typeDefs');
@@ -47,6 +48,7 @@ app.use('/users', usersRouter);
 app.use('/security', securityRouter);
 app.use('/api', restApi);
 app.use('/graphql', graphQl);
+app.use('/serverevent', serverEvent);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

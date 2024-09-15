@@ -11,17 +11,17 @@ function cspHeaders(req, res, next) {
 }
 
 function iframeProtection(req, res, next) {
-  res.setHeader('Content-Security-Policy', "frame-ancestors 'none'");
+  res.setHeader("Content-Security-Policy", "frame-ancestors 'none'");
   next();
 }
 
 function removeHeader(req, res, next) {
-  res.removeHeader('X-Powered-By');
+  res.removeHeader("X-Powered-By");
   next();
 }
 
 function referralHeader(req, res, next) {
-  res.removeHeader('Referrer-Policy', 'no-referrer');
+  res.removeHeader("Referrer-Policy", "no-referrer");
   next();
 }
 

@@ -1,0 +1,16 @@
+<div class="container">
+  <p>Server Event</p>
+
+  <p id="sse-data"></p>
+</div>
+
+<script>
+  // Setup sse connection
+  const eventSource = new EventSource("/serverevent/sse");
+
+  eventSource.onmessage = (event) => {
+    console.log(event.data);
+    const sseDataRef = document.getElementById("sse-data");
+    sseDataRef.innerHTML += event.data;
+  };
+</script>
