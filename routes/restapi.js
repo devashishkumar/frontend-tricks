@@ -15,9 +15,7 @@ const todos = [
 ];
 
 router.all("/", (req, res) => {
-    console.log(req);
-    console.log(res);
-    res.send(`I'm up!`);
+    res.send("It is up");
   });
 
 // READ
@@ -70,7 +68,7 @@ router.delete("/todos/:id", (req, res) => {
 });
 
 router.get("/name", function (req, res, next) {
-  return res.send({ name: "Ashish" });
+  res.send({ name: "Ashish" });
 });
 
 module.exports = router;

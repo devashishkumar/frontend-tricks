@@ -64,3 +64,26 @@ res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains;
 | 3XX | Redirection    | 301 (Moved Permanently), 302 (Temporarily Moving)  | 
 | 4XX | Client Error    | 400 (Bad Request), 401 (Unauthorized), 403 (Authorization), 404 (Not Found), 405 (Method Not Allowed), 429 (Concurrent Request) |
 | 5XX | Server Error    | 500 (Internal Server Error), 502 (Bad Gateway), 503 (Service Unavailable), 504 (Gateway Timeout), 507 (Insufficient Storage) |
+
+## Graphql
+
+// Structure
+books {
+    id,
+    title,
+    publishedYear
+    author
+}
+
+author {
+    id,
+    name,
+    books
+}
+
+// Data 
+
+list of books
+list of authors
+list of books with author details
+list of author with book details

@@ -9,8 +9,27 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var securityRouter = require('./routes/security');
 var restApi = require('./routes/restapi');
+var graphQl = require('./routes/graphql');
+// var ApolloServer = require('@apollo/server');
+// startStandaloneServer = require('@apollo/server/standalone');
+// typeDefs = require('./routes/typeDefs');
+// resolvers = ('./routes/resolvers');
 
 var app = express();
+
+
+// const server = new ApolloServer({
+//   typeDefs,
+//   resolvers,
+// });
+// async function apolloServer() {
+//   const { url } = startStandaloneServer(server, {
+//     listen: { port: 4001 },
+//   });
+// }
+// apolloServer();
+
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -27,6 +46,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/security', securityRouter);
 app.use('/api', restApi);
+app.use('/graphql', graphQl);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
