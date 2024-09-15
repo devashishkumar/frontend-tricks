@@ -55,3 +55,12 @@ res.setHeader('X-Content-Type-Options', 'nosniff');
 res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
 
 ```
+
+## Status Code
+
+| Status Range | Use Case | Status Code |
+| 1XX | Information    | 100 (Continue), 101 (Switching)   |
+| 2XX | Success    | 200 (Ok), 201 (Created), 202 (Accepted), 204 (No Content), 206 (Partial Content)   | 
+| 3XX | Redirection    | 301 (Moved Permanently), 302 (Temporarily Moving)  | 
+| 4XX | Client Error    | 400 (Bad Request), 401 (Unauthorized), 403 (Authorization), 404 (Not Found), 405 (Method Not Allowed), 429 (Concurrent Request) |
+| 5XX | Server Error    | 500 (Internal Server Error), 502 (Bad Gateway), 503 (Service Unavailable), 504 (Gateway Timeout), 507 (Insufficient Storage) |
