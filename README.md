@@ -67,6 +67,7 @@ res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains;
 
 ## Graphql
 
+```html
 // Structure
 books {
     id,
@@ -87,3 +88,4 @@ list of books
 list of authors
 list of books with author details
 list of author with book details
+```
