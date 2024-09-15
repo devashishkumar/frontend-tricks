@@ -11,6 +11,7 @@ var securityRouter = require('./routes/security');
 var restApi = require('./routes/restapi');
 var graphQl = require('./routes/graphql');
 var serverEvent = require('./routes/serverevents');
+var cookieRouter = require('./routes/cookie');
 // var ApolloServer = require('@apollo/server');
 // startStandaloneServer = require('@apollo/server/standalone');
 // typeDefs = require('./routes/typeDefs');
@@ -49,6 +50,7 @@ app.use('/security', securityRouter);
 app.use('/api', restApi);
 app.use('/graphql', graphQl);
 app.use('/serverevent', serverEvent);
+app.use('/cookie', cookieRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

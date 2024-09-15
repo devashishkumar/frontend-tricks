@@ -91,3 +91,5 @@ list of author with book details
 ```
 
 ## Server Events
+
+## Cookie
