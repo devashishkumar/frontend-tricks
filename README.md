@@ -109,6 +109,11 @@ list of author with book details
 
 ## GraphQL
 
+implement graphql console in application:
+
+![graphql](https://github.com/user-attachments/assets/8e0209fe-1217-4d2f-b6d6-47bb932a3446)
+
+
 ## Setup mongodb 7 in windows
 
 - mongo commands are not working in CLI in case mongodb 6 or greater installed. We need to install mongosh CLI using this url. [mongosh windows installer](https://www.mongodb.com/try/download/shell)

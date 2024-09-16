@@ -71,7 +71,7 @@ router.get("/", function (req, res, next) {
   res.send({ name: "Ashish" });
 });
 
-router.get(
+router.use(
   "/graphql",
   graphqlHTTP({
     graphiql: true,

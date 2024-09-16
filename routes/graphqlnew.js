@@ -3,7 +3,7 @@ const { graphqlHTTP } = require("express-graphql");
 const { buildSchema } = require("graphql");
 var router = express.Router();
 
-router.get(
+router.use(
   "/graphql",
   graphqlHTTP({
     schema: buildSchema(`
