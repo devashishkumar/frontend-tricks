@@ -108,3 +108,167 @@ list of author with book details
 ```
 
 ## Graphql
+
+## setup mongodb 7 in windows
+
+- mongo commands is not working in CLI in case mongodb 6 and greater installed. We need to install mongosh CLI using this url. [mongosh windows installer](https://www.mongodb.com/try/download/shell)
+
+- mongodb basic commands
+
+```html
+
+// get all db's list
+show dbs;
+
+// use existing db in case not exist mongodb will create it
+use testdb;
+
+// return current selected database name
+db;
+
+// list all collections (table) in current database
+
+show collections;
+
+// collections are like tables in mogodb. create collection syntax and insert single record
+db.posts.insert({"title":"title1", "body":"description1", "category":"category1", "created_at":Date()})
+
+// insert multiple records (records are documents in mongodb just like rows in sql)
+db.posts.insertMany([{"title":"title1", "body":"description1", "category":"category1", "created_at":Date()},
+{"title":"title2", "body":"description2", "category":"category2", "created_at":Date()},
+{"title":"title3", "body":"description3", "category":"category3", "created_at":Date()},
+{"title":"title4", "body":"description4", "category":"category4", "created_at":Date()}]);
+
+//- difference between 'save' and 'insert' command is that the 'save' command can insert or update a document whereas 'insert' only performs the insertion.
+
+db.fruit.save({"name":"apple", "color":"red","shape":"round"});
+
+// this save statement will update the record with specified id
+db.fruit.save(
+{"_id" : ObjectId("53fa1809132c1f084b005cd0"),"name":"apple", 
+"color":"real red","shape":"round"})
+
+// update record (this query only change the fields value we have passed in $set)
+db.posts.update({"title": "title2"}, {$set: {
+"body":"update description",
+"updated_at": Date()
+}}, {upsert: true});
+
+// update record (in this case if we are not using other fields to update it will blank the reset of the fields)
+db.posts.update({"title": "title1"}, {
+"body":"update description again",
+"updated_at": Date()
+}, {upsert: true});
+
+// drop collection
+db.collectionName.drop();
+
+// get all documents mongodb query
+db.posts.find().pretty();
+
+// find with basic criterias
+db.posts.find({"title": "title1"});
+
+// OR condition with find
+db.posts.find({$or:[{"title":"title1"},{"title": "title2"}]}).pretty();
+
+// AND condition with find
+db.posts.find({$and:[{"title":"title1"},{"body": "description1"}]}).pretty();
+
+// nested documents
+db.newcollection.insert([
+	{
+		title: "MongoDB Overview",
+		description: "MongoDB is no SQL database",
+		by: "tutorials point",
+		url: "http://www.tutorialspoint.com",
+		tags: ["mongodb", "database", "NoSQL"],
+		likes: 100
+	},
+	{
+		title: "NoSQL Database",
+		description: "NoSQL database doesn't have tables",
+		by: "tutorials point",
+		url: "http://www.tutorialspoint.com",
+		tags: ["mongodb", "database", "NoSQL"],
+		likes: 20,
+		comments: [
+			{
+				user:"user1",
+				message: "My first comment",
+				dateCreated: new Date(2013,11,10,2,35),
+				like: 0
+			}
+		]
+	}
+]);
+
+// using AND/OR in the same query
+
+db.newcollection.find({"likes": {$gt:10}, $or: [{"by": "tutorials point"},
+   {"title": "MongoDB Overview"}]}).pretty();
+
+
+db.empDetails.insertMany(
+	[
+		{
+			First_Name: "Ashish",
+			Last_Name: "Kumar",
+			Age: "26",
+			e_mail: "ashishkumar@gmail.com",
+			phone: "9999999999"
+		},
+		{
+			First_Name: "Sunny",
+			Last_Name: "Kumar",
+			Age: "27",
+			e_mail: "sunnykumar@gmail.com",
+			phone: "5555555555"
+		},
+		{
+			First_Name: "New",
+			Last_Name: "Name",
+			Age: "28",
+			e_mail: "newname@gmail.com",
+			phone: "8888888888"
+		}
+	]
+);
+
+db.empDetails.find().pretty();
+
+
+// equal operator
+db.empDetails.find({Age:{$eq:"26"}});
+
+// not equal operator
+db.empDetails.find({Age:{$ne:"24"}});
+
+// greater than operator
+db.empDetails.find({Age:{$gt:"24"}});
+
+// NOT IN operator
+db.empDetails.find({Age:{$nin:['24', '26']}});
+
+// IN operator
+db.empDetails.find({Age:{$in:['24', '26']}});
+
+// and operator
+db.empDetails.find({$and:[{First_Name:'Ashish'}, {Age: '26'}]});
+
+// all operator equivalent to above and operator
+
+db.empDetails.find({ First_Name :{$all:[['Ashish', 'Sunny']]}});
+
+db.empDetails.find( { First_Name: [ 'Ashish', 'Sunny' ] } );
+
+// remove document/s from collection/s
+db.empDetails.remove({'First_Name':'Ashish'});
+
+// remove single document from collection/s. second parameter s true for single record delete and false for all criteria
+db.empDetails.remove({'First_Name':'Ashish'}, true);
+
+// remove all documents from collection
+db.empDetails.remove({});
+
+```
