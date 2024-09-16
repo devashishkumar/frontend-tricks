@@ -95,3 +95,5 @@ list of author with book details
 ## Cookie
 
 ## Index DB
+
+## Browser inbuilt indexdb example

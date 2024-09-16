@@ -1,0 +1,57 @@
+
+
+<script>
+    const indexDB = window.indexedDB ||
+    window.mozIndexedDB ||
+    window.webkitIndexedDB ||
+    window.msIndexedDB ||
+    window.shimIndexedDB;
+
+    const request = indexDB.open("carsDatabase", 1);
+    console.log(request);
+
+    request.onerror = function(event) {
+        console.log(event, "Error Found");
+    }
+
+    request.onupgradeneeded = function() {
+        const db = request.result;
+        const store = db.createObjectStore("cars", {keyPath: "id"});
+        store.createIndex("cars_colour", ["colour"], {unique: false});
+        store.createIndex("colour_and_make", ["colour", "make"], {unique: false});
+    }
+
+    request.onsuccess = function() {
+        const db2 = request.result;
+        console.log(db2);
+
+        const transaction = db2.transaction("cars", "readwrite");
+
+        const store = transaction.objectStore("cars");
+        const colorIndex = store.index("cars_colour");
+        const makeModelIndex = store.index("colour_and_make");
+
+        store.put({id: 1, colour: "Red", make: "Tata"});
+        store.put({id: 2, colour: "Black", make: "Honda"});
+
+        const idQuery = store.get(2);
+        const colourQuery = colorIndex.getAll(["Red"]);
+        const colourMakeQuery = makeModelIndex.get(["Red", "Tata"]);
+
+        idQuery.onsuccess = function() {
+            console.log("id query", idQuery.result);
+        };
+
+        colourQuery.onsuccess = function() {
+            console.log("colour query", colourQuery.result);
+        };
+
+        colourMakeQuery.onsuccess = function() {
+            console.log("colour make query", colourMakeQuery.result);
+        };
+
+        transaction.oncomplete = function() {
+            db2.close();
+        };
+    }
+</script>
