@@ -98,9 +98,11 @@ list of author with book details
 
 ## Browser inbuilt IndexDB example
 
+```html
 - To perform any operation on our DB we must create a transaction. A transaction can be a single operation or multiple operations that must all succeed, otherwise none of them will. Further down we will add four "cars" to our database one by one, but if any of those inserts failed for any reason then all four of them would fail because they happen on this single transaction we have created.
 - We need to ge ta reference to our object store that holds the cars. We also get a reference to our indexes. These are simply just getting references to the values that we created on the database in the previous section.
 - The put method on an object store is how we add data to our database. Based on the schema we created we will add a bunch of objects (cars). The ID We have given them is simply a unique number, you can also use the autoincrement value described previously when creating the object store to avoid having to set this value manually.
 - These are our queries. You can always query an item directly with the value of your keyPath as we have here on the first line. On our second line we use the getAll method which will return an array with every result it finds. We are searching against our cars_colour index for "Red". We should expect to find two results. The final line searches for one result against our compound index for any vehicle with a colour of "Black" and a make of "Honda".
 - These are success event handlers, they will fire when the query finishes and run whatever code is inside of them. They will not fire until the result value is populated on the query so it is safe to check it, as we do in these functions by logging it to the console.
 - Lastly, since this is our only operation we will close our connection to the database when the transaction finishes. You don't need to manually fire the transaction with IndexedDB it will simply run on its own.
+```
