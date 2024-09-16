@@ -106,3 +106,5 @@ list of author with book details
 - These are success event handlers, they will fire when the query finishes and run whatever code is inside of them. They will not fire until the result value is populated on the query so it is safe to check it, as we do in these functions by logging it to the console.
 - Lastly, since this is our only operation we will close our connection to the database when the transaction finishes. You don't need to manually fire the transaction with IndexedDB it will simply run on its own.
 ```
+
+## Graphql
