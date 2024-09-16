@@ -66,15 +66,15 @@
       console.log("Record deleted");
     };
 
-    // Remove record based on value
-    const redCarKey = colorIndex.getKey(["Red"]);
+    // Remove record based on value (code not working. require fixes)
+    // const redCarKey = colorIndex.getKey(["Red"]);
 
-    redCarKey.onsuccess = function () {
-      const deleteCar = store.delete(redCarKey.result);
+    // redCarKey.onsuccess = function () {
+    //   const deleteCar = store.delete(redCarKey.result);
 
-      deleteCar.onsuccess = function () {
-        console.log("Record removed");
-      };
-    };
+    //   deleteCar.onsuccess = function () {
+    //     console.log("Record removed");
+    //   };
+    // };
   };
 </script>
