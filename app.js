@@ -52,7 +52,7 @@ try {
       console.log("connection error", err);
     });
 } catch (error) {
-  console.error("error line 68", error);
+  console.error("error", error);
 }
 
 // catch 404 and forward to error handler
