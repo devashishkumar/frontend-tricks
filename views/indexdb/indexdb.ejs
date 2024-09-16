@@ -43,7 +43,7 @@
     idQuery.onsuccess = function () {
       // Update existing data
       idQuery.result.colour = "Green";
-      idQuery.put(subaru.result);
+      store.put(idQuery.result);
 
       console.log("id query", idQuery.result);
     };
@@ -67,7 +67,7 @@
     };
 
     // Remove record based on value
-    const redCarKey = colourIndex.getKey(["Red"]);
+    const redCarKey = colorIndex.getKey(["Red"]);
 
     redCarKey.onsuccess = function () {
       const deleteCar = store.delete(redCarKey.result);
