@@ -107,9 +107,9 @@ list of author with book details
 - Lastly, since this is our only operation we will close our connection to the database when the transaction finishes. You don't need to manually fire the transaction with IndexedDB it will simply run on its own.
 ```
 
-## Graphql
+## GraphQL
 
-## setup mongodb 7 in windows
+## Setup mongodb 7 in windows
 
 - mongo commands are not working in CLI in case mongodb 6 or greater installed. We need to install mongosh CLI using this url. [mongosh windows installer](https://www.mongodb.com/try/download/shell)
 
@@ -280,7 +280,7 @@ For nodejs version less than 18, Mongoose connection syntax
 mongoose
     .connect("mongodb://localhost:27017/newdb")
     .then(() => {
-      console.log("Connected To DB Sucessfully....");
+      console.log("Connected");
     })
     .catch((err) => {
       console.log(err);
@@ -288,12 +288,12 @@ mongoose
 
 ```
 
-For nodejs version 18 and greater, Mongoose connection syntax
+For nodejs version 18 or later, Mongoose connection syntax
 ```ts
 mongoose
     .connect("mongodb://127.0.0.1:27017/newdb")
     .then(() => {
-      console.log("Connected To DB Sucessfully....");
+      console.log("Connected");
     })
     .catch((err) => {
       console.log(err);

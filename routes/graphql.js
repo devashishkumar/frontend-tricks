@@ -7,7 +7,7 @@ const {
   GraphQLInt,
   GraphQLString,
   GraphQLList,
-  GraphQLSchema,
+  GraphQLSchema
 } = require("graphql");
 
 const Owners = [

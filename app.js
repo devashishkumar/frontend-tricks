@@ -4,6 +4,7 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var ejsLayouts = require("express-ejs-layouts");
+var bodyParser = require("body-parser");
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
@@ -14,29 +15,15 @@ var graphQlNew = require("./routes/graphqlnew");
 var serverEvent = require("./routes/serverevents");
 var cookieRouter = require("./routes/cookie");
 var indexdbRouter = require("./routes/indexdb");
-// var ApolloServer = require('@apollo/server');
-// startStandaloneServer = require('@apollo/server/standalone');
-// typeDefs = require('./routes/typeDefs');
-// resolvers = ('./routes/resolvers');
 
 var app = express();
-
-// const server = new ApolloServer({
-//   typeDefs,
-//   resolvers,
-// });
-// async function apolloServer() {
-//   const { url } = startStandaloneServer(server, {
-//     listen: { port: 4001 },
-//   });
-// }
-// apolloServer();
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 var mongoose = require("mongoose");
 
+app.use(bodyParser.json());
 app.use(ejsLayouts);
 app.use(logger("dev"));
 app.use(express.json());
@@ -59,13 +46,13 @@ try {
   mongoose
     .connect("mongodb://127.0.0.1:27017/newdb")
     .then(() => {
-      console.log("Connected To DB Sucessfully....");
+      console.log("Connected");
     })
     .catch((err) => {
-      console.log(err);
+      console.log("connection error", err);
     });
 } catch (error) {
-  console.error("error", error);
+  console.error("error line 68", error);
 }
 
 // catch 404 and forward to error handler
