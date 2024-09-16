@@ -109,7 +109,7 @@ list of author with book details
 
 ## GraphQL
 
-implement graphql console in application:
+implement GraphQL console in application:
 
 ![graphql](https://github.com/user-attachments/assets/8e0209fe-1217-4d2f-b6d6-47bb932a3446)
 
