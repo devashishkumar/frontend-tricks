@@ -285,7 +285,7 @@ For nodejs version less than 18, Mongoose connection syntax
 mongoose
     .connect("mongodb://localhost:27017/newdb")
     .then(() => {
-      console.log("Connected");
+      console.log("connected");
     })
     .catch((err) => {
       console.log(err);
@@ -298,7 +298,7 @@ For nodejs version 18 or later, Mongoose connection syntax
 mongoose
     .connect("mongodb://127.0.0.1:27017/newdb")
     .then(() => {
-      console.log("Connected");
+      console.log("connected");
     })
     .catch((err) => {
       console.log(err);
