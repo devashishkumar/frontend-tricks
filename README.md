@@ -94,9 +94,9 @@ list of author with book details
 
 ## Cookie
 
-## Index DB
+## IndexDB
 
-## Browser inbuilt indexdb example
+## Browser inbuilt IndexDB example
 
 - To perform any operation on our DB we must create a transaction. A transaction can be a single operation or multiple operations that must all succeed, otherwise none of them will. Further down we will add four "cars" to our database one by one, but if any of those inserts failed for any reason then all four of them would fail because they happen on this single transaction we have created.
 - We need to ge ta reference to our object store that holds the cars. We also get a reference to our indexes. These are simply just getting references to the values that we created on the database in the previous section.
