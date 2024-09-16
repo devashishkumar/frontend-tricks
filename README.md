@@ -272,3 +272,31 @@ db.empDetails.remove({'First_Name':'Ashish'}, true);
 db.empDetails.remove({});
 
 ```
+
+## mongoose in node js
+
+For nodejs version less than 18, Mongoose connection syntax
+```ts
+mongoose
+    .connect("mongodb://localhost:27017/newdb")
+    .then(() => {
+      console.log("Connected To DB Sucessfully....");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+
+```
+
+For nodejs version 18 and greater, Mongoose connection syntax
+```ts
+mongoose
+    .connect("mongodb://127.0.0.1:27017/newdb")
+    .then(() => {
+      console.log("Connected To DB Sucessfully....");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+
+```
