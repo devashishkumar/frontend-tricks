@@ -111,7 +111,7 @@ list of author with book details
 
 ## setup mongodb 7 in windows
 
-- mongo commands is not working in CLI in case mongodb 6 and greater installed. We need to install mongosh CLI using this url. [mongosh windows installer](https://www.mongodb.com/try/download/shell)
+- mongo commands are not working in CLI in case mongodb 6 and greater installed. We need to install mongosh CLI using this url. [mongosh windows installer](https://www.mongodb.com/try/download/shell)
 
 - mongodb basic commands
 
