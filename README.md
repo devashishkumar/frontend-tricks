@@ -280,7 +280,7 @@ db.empDetails.remove({});
 
 ## mongoose in node js
 
-For nodejs version less than 18, Mongoose connection syntax
+For nodejs version less than 18. mongoose connection syntax
 ```ts
 mongoose
     .connect("mongodb://localhost:27017/newdb")
@@ -293,7 +293,7 @@ mongoose
 
 ```
 
-For nodejs version 18 or later, Mongoose connection syntax
+For nodejs version 18 or later. mongoose connection syntax
 ```ts
 mongoose
     .connect("mongodb://127.0.0.1:27017/newdb")
