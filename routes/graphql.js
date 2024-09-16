@@ -13,36 +13,36 @@ const {
 const Owners = [
   {
     id: 1,
-    name: "Ashish"
+    name: 'Ashish'
   },
   {
     id: 2,
-    name: "Sunny"
+    name: 'Sunny'
   }
 ];
 const Websites = [
-  { id: 1, name: "ABCD", ownerId: 1 },
-  { id: 2, name: "ABCDE", ownerId: 1 },
-  { id: 3, name: "ABCDEF", ownerId: 2 },
-  { id: 4, name: "ABCDEFG", ownerId: 2 },
-  { id: 5, name: "ABCDEFGH", ownerId: 2 }
+  { id: 1, name: 'ABCD', ownerId: 1 },
+  { id: 2, name: 'ABCDE', ownerId: 1 },
+  { id: 3, name: 'ABCDEF', ownerId: 2 },
+  { id: 4, name: 'ABCDEFG', ownerId: 2 },
+  { id: 5, name: 'ABCDEFGH', ownerId: 2 }
 ];
 const WebsiteType = new GraphQLObjectType({
   name: "Website",
-  description: "Represents website owner",
+  description: "Represents websites",
   fields: () => ({
     id: { type: new GraphQLNonNull(GraphQLInt) },
     name: { type: new GraphQLNonNull(GraphQLString) },
-    ownerId: { type: new GraphQLNonNull(GraphQLInt) },
-  }),
+    ownerId: { type: new GraphQLNonNull(GraphQLInt) }
+  })
 });
 const OwnerType = new GraphQLObjectType({
   name: "Owner",
   description: "Represents owner",
   fields: () => ({
     id: { type: new GraphQLNonNull(GraphQLInt) },
-    name: { type: new GraphQLNonNull(GraphQLString) },
-  }),
+    name: { type: new GraphQLNonNull(GraphQLString) }
+  })
 });
 
 const RootQueryType = new GraphQLObjectType({
@@ -58,8 +58,8 @@ const RootQueryType = new GraphQLObjectType({
       type: new GraphQLList(OwnerType),
       description: "All Owners",
       resolve: () => Owners,
-    },
-  }),
+    }
+  })
 });
 
 const schema = new GraphQLSchema({
@@ -75,7 +75,7 @@ router.get(
   "/graphql",
   graphqlHTTP({
     graphiql: true,
-    schema: schema,
+    schema: schema
   })
 );
 
