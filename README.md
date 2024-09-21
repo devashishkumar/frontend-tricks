@@ -135,6 +135,14 @@ query {
 
 ![graphql-fetch](https://github.com/user-attachments/assets/a0c72e46-7ada-4759-9c66-65e0b8776eef)
 
+## Add data to mongodb
+
+![mongodb-console](https://github.com/user-attachments/assets/5a2a75a8-5811-47d1-a726-531bc19923b4)
+
+## Get data from mongodb along with GraphQL implementation
+
+![get-records-from-db](https://github.com/user-attachments/assets/8e4026c9-84bf-42a5-b899-f9c554abcbe6)
+
 ## Setup mongodb 7 in windows
 
 - mongo commands are not working in CLI in case mongodb 6 or greater installed. We need to install mongosh CLI using this url. [mongosh windows installer](https://www.mongodb.com/try/download/shell)

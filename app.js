@@ -59,7 +59,7 @@ app.use("/indexdb", indexdbRouter);
 // mondodb connect from local machine mongodb
 try {
   mongoose
-    .connect("mongodb://127.0.0.1:27017/newdb")
+    .connect("mongodb://127.0.0.1:27017/graphql")
     .then(() => {
       console.log("connected");
     })

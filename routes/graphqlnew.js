@@ -2,8 +2,7 @@ var express = require("express");
 const { graphqlHTTP } = require("express-graphql");
 const { buildSchema } = require("graphql");
 var router = express.Router();
-
-const events = [];
+const Event = require("./../models/event");
 
 router.use(
   "/graphql",
@@ -14,13 +13,13 @@ router.use(
       title: String!
       description: String!
       price: Float!
-      date: String
+      date: String!
       }
       input EventInput {
       title: String!
       description: String!
       price: Float!
-      date: String
+      date: String!
       }
       type RootQuery {
       events: [Event!]!
@@ -35,17 +34,42 @@ router.use(
       `),
     rootValue: {
       events: () => {
-        return events;
+        return Event.find()
+          .then((events) => {
+            return events.map((event) => {
+              return { ...event._doc, _id: event.id.toString() };
+            });
+          })
+          .catch((err) => {
+            return err;
+          });
+        // return events;
       },
       createEvent: (args) => {
-        const event = {
-          _id: Math.random().toString(),
+        // const event = {
+        //   _id: Math.random().toString(),
+        //   title: args.eventInput.title,
+        //   description: args.eventInput.description,
+        //   price: +args.eventInput.price,
+        //   date: new Date().toISOString()
+        // };
+        const event = new Event({
           title: args.eventInput.title,
           description: args.eventInput.description,
           price: +args.eventInput.price,
-          date: new Date().toISOString()
-        };
-        events.push(event);
+          date: new Date(args.eventInput.date),
+        });
+        // now saving to mongodb database
+        return event
+          .save()
+          .then((result) => {
+            console.log(result);
+            return { ...result._doc, _id: result._doc._id.toString() };
+          })
+          .catch((err) => {
+            console.log(err);
+            throw err;
+          });
         return event;
       },
     },
