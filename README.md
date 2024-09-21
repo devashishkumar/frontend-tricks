@@ -69,25 +69,13 @@ res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains;
 
 ```html
 // Structure
-books {
-    id,
+events {
+    _id,
     title,
-    publishedYear
-    author
+    description
+    price
+	date
 }
-
-author {
-    id,
-    name,
-    books
-}
-
-// Data 
-
-list of books
-list of authors
-list of books with author details
-list of author with book details
 ```
 
 ## Server Events
