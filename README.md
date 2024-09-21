@@ -326,3 +326,19 @@ mongoose
     });
 
 ```
+
+Connect mongodb cloud connection string
+```ts
+mongoose
+    .connect("mongodb+srv://kumarashish0512:<db_password>@graphql.f9rwv.mongodb.net/")
+    .then(() => {
+      console.log("connected");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+
+```
+
+How MongoDB Atlas works. Please refer to this YouTube Video URL.
+[Advance MongoDB](https://www.youtube.com/watch?v=39DqOhkyt1I)

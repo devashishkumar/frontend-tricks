@@ -41,7 +41,22 @@ app.use("/serverevent", serverEvent);
 app.use("/cookie", cookieRouter);
 app.use("/indexdb", indexdbRouter);
 
-// mondodb connect
+// mongodb connect from mongodb atlas (cloud)
+
+// try {
+//   mongoose
+//     .connect("mongodb+srv://kumarashish0512:<db_password>@graphql.f9rwv.mongodb.net/")
+//     .then(() => {
+//       console.log("connected");
+//     })
+//     .catch((err) => {
+//       console.log("connection error", err);
+//     });
+// } catch (error) {
+//   console.error("error", error);
+// }
+
+// mondodb connect from local machine mongodb
 try {
   mongoose
     .connect("mongodb://127.0.0.1:27017/newdb")
