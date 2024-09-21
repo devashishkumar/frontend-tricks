@@ -99,8 +99,41 @@ events {
 
 ![graphql](https://github.com/user-attachments/assets/8e0209fe-1217-4d2f-b6d6-47bb932a3446)
 
+### Mutation
+
+```html
+
+mutation {
+  createEvent(eventInput: {title: "Title", description: "Description", price: 10.10}) {
+	_id
+    title
+    description
+    price
+    date
+  }
+}
+
+```
+
 ![graphql-mutation](https://github.com/user-attachments/assets/c52c52a6-6a0a-4b66-bdce-5f32f75de1b5)
 
+### Fetch
+
+```html
+
+query {
+  events {
+    _id
+    title
+    description
+    price
+    date
+  }
+}
+
+```
+
+![graphql-fetch](https://github.com/user-attachments/assets/a0c72e46-7ada-4759-9c66-65e0b8776eef)
 
 ## Setup mongodb 7 in windows
 
