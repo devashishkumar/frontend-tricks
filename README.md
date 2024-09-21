@@ -65,19 +65,6 @@ res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains;
 | 4XX | Client Error    | 400 (Bad Request), 401 (Unauthorized), 403 (Authorization), 404 (Not Found), 405 (Method Not Allowed), 429 (Concurrent Request) |
 | 5XX | Server Error    | 500 (Internal Server Error), 502 (Bad Gateway), 503 (Service Unavailable), 504 (Gateway Timeout), 507 (Insufficient Storage) |
 
-## Graphql
-
-```html
-// Structure
-events {
-    _id,
-    title,
-    description
-    price
-	date
-}
-```
-
 ## Server Events
 
 ## Cookie
@@ -99,7 +86,20 @@ events {
 
 implement GraphQL console in application:
 
+```html
+// Structure
+events {
+    _id,
+    title,
+    description
+    price
+	date
+}
+```
+
 ![graphql](https://github.com/user-attachments/assets/8e0209fe-1217-4d2f-b6d6-47bb932a3446)
+
+![graphql-mutation](https://github.com/user-attachments/assets/c52c52a6-6a0a-4b66-bdce-5f32f75de1b5)
 
 
 ## Setup mongodb 7 in windows

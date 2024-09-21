@@ -14,13 +14,13 @@ router.use(
       title: String!
       description: String!
       price: Float!
-      date: String!
+      date: String
       }
       input EventInput {
       title: String!
       description: String!
       price: Float!
-      date: String!
+      date: String
       }
       type RootQuery {
       events: [Event!]!
@@ -40,12 +40,13 @@ router.use(
       createEvent: (args) => {
         const event = {
           _id: Math.random().toString(),
-          title: args.title,
-          description: args.description,
-          price: +args.price,
+          title: args.eventInput.title,
+          description: args.eventInput.description,
+          price: +args.eventInput.price,
           date: new Date().toISOString()
         };
         events.push(event);
+        return event;
       },
     },
     graphiql: true,
