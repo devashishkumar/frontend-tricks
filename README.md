@@ -303,6 +303,7 @@ db.empDetails.remove({});
 
 For nodejs version less than 18. mongoose connection syntax
 ```ts
+
 mongoose
     .connect("mongodb://localhost:27017/newdb")
     .then(() => {
@@ -316,6 +317,7 @@ mongoose
 
 For nodejs version 18 or later. mongoose connection syntax
 ```ts
+
 mongoose
     .connect("mongodb://127.0.0.1:27017/newdb")
     .then(() => {
@@ -327,8 +329,9 @@ mongoose
 
 ```
 
-Connect mongodb cloud connection string
+Connect application with mongodb cloud (connection string)
 ```ts
+
 mongoose
     .connect("mongodb+srv://kumarashish0512:<db_password>@graphql.f9rwv.mongodb.net/")
     .then(() => {
