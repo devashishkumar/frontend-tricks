@@ -139,9 +139,13 @@ query {
 
 ![mongodb-console](https://github.com/user-attachments/assets/5a2a75a8-5811-47d1-a726-531bc19923b4)
 
+## Save data to mongodb along with GraphQL implementation
+
+![save-data-to-mongodb](https://github.com/user-attachments/assets/afc08c37-f458-411b-893c-c3e06d7d58ca)
+
 ## Get data from mongodb along with GraphQL implementation
 
-![get-records-from-db](https://github.com/user-attachments/assets/8e4026c9-84bf-42a5-b899-f9c554abcbe6)
+![get-records-from-db](https://github.com/user-attachments/assets/914d927e-6297-428d-aedb-922761e4e6ac)
 
 ## Setup mongodb 7 in windows
 
