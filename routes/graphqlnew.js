@@ -1,8 +1,10 @@
 var express = require("express");
 const { graphqlHTTP } = require("express-graphql");
 const { buildSchema } = require("graphql");
+const bcrypt = require("bcryptjs");
 var router = express.Router();
 const Event = require("./../models/event");
+const User = require("./../models/user");
 
 router.use(
   "/graphql",
@@ -15,17 +17,27 @@ router.use(
       price: Float!
       date: String!
       }
+      type User {
+      _id: ID!
+      email: String!
+      password: String!
+      }
       input EventInput {
       title: String!
       description: String!
       price: Float!
       date: String!
       }
+      input UserInput {
+      email: String!
+      password: String!
+      }
       type RootQuery {
       events: [Event!]!
       }
       type RootMutation {
       createEvent(eventInput: EventInput): Event
+      createUser(userInput: UserInput): User
       }
       schema {
       query: RootQuery
@@ -46,13 +58,6 @@ router.use(
         // return events;
       },
       createEvent: (args) => {
-        // const event = {
-        //   _id: Math.random().toString(),
-        //   title: args.eventInput.title,
-        //   description: args.eventInput.description,
-        //   price: +args.eventInput.price,
-        //   date: new Date().toISOString()
-        // };
         const event = new Event({
           title: args.eventInput.title,
           description: args.eventInput.description,
@@ -71,6 +76,27 @@ router.use(
             throw err;
           });
         return event;
+      },
+      createUser: (args) => {
+        return bcrypt
+          .hash(args.userInput.password, 12)
+          .then((hashPasssword) => {
+            const user = new User({
+              email: args.userInput.email,
+              password: hashPasssword,
+            });
+            return user
+              .save()
+              .then((result) => {
+                return { ...result._doc, _id: result._doc._id.toString() };
+              })
+              .catch((err) => {
+                throw err;
+              });
+          })
+          .catch((err) => {
+            throw err;
+          });
       },
     },
     graphiql: true,
