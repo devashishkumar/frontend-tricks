@@ -194,6 +194,10 @@ mutation {
 
 ![duplicate-user-validation](https://github.com/user-attachments/assets/e3034b1c-84f3-4b17-bb1f-840fa7ac612b)
 
+## Create Event with User relation and same for User
+
+![db-relation](https://github.com/user-attachments/assets/5b6b7bc0-79bd-4598-bfbf-1b73cc6a3213)
+
 ## Setup mongodb 7 in windows
 
 - mongo commands are not working in CLI in case mongodb 6 or greater installed. We need to install mongosh CLI using this url. [mongosh windows installer](https://www.mongodb.com/try/download/shell)
