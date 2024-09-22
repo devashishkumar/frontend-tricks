@@ -198,6 +198,23 @@ mutation {
 
 ![db-relation](https://github.com/user-attachments/assets/5b6b7bc0-79bd-4598-bfbf-1b73cc6a3213)
 
+## Get relational table fields
+
+```ts
+
+query {
+  events {
+    creator {
+      email
+      _id
+    }
+  }
+}
+
+```
+![find-user-details-from-events](https://github.com/user-attachments/assets/96c6edf3-625a-49d3-a719-ec77000644a1)
+
+
 ## Setup mongodb 7 in windows
 
 - mongo commands are not working in CLI in case mongodb 6 or greater installed. We need to install mongosh CLI using this url. [mongosh windows installer](https://www.mongodb.com/try/download/shell)
