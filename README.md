@@ -137,7 +137,7 @@ query {
 
 ```ts
 mutation {
-  createEvent(eventInput: {title: "Title", description: "Description", price: 10.10}) {
+  createEvent(eventInput: {title: "Title", description: "Description", price: 10.10, date: "2024-09-22T08:05:37.182Z"}) {
     title
     description
     _id
@@ -189,6 +189,10 @@ mutation {
 ## Create User and save in mongodb along with GraphQL implementation
 
 ![create-user](https://github.com/user-attachments/assets/df74fa75-bbe0-42ca-adca-1ef12ef7c583)
+
+## Duplicate User Validation
+
+![duplicate-user-validation](https://github.com/user-attachments/assets/e3034b1c-84f3-4b17-bb1f-840fa7ac612b)
 
 ## Setup mongodb 7 in windows
 

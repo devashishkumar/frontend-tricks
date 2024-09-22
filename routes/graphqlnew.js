@@ -63,13 +63,26 @@ router.use(
           description: args.eventInput.description,
           price: +args.eventInput.price,
           date: new Date(args.eventInput.date),
+          creator: "66efc1957c08bdea5be34454",
         });
+        let createdEvent;
         // now saving to mongodb database
         return event
           .save()
           .then((result) => {
+            createdEvent = { ...result._doc, _id: result._doc._id.toString() };
+            return User.findById("66efc1957c08bdea5be34454");
+          })
+          .then((user) => {
+            if (!user) {
+              throw new Error("User not found.");
+            }
+            user.createdEvents.push(event);
+            return user.save();
+          })
+          .then((result) => {
             console.log(result);
-            return { ...result._doc, _id: result._doc._id.toString() };
+            return createdEvent;
           })
           .catch((err) => {
             console.log(err);
