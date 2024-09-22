@@ -78,21 +78,35 @@ router.use(
         return event;
       },
       createUser: (args) => {
-        return bcrypt
-          .hash(args.userInput.password, 12)
-          .then((hashPasssword) => {
-            const user = new User({
-              email: args.userInput.email,
-              password: hashPasssword,
-            });
-            return user
-              .save()
-              .then((result) => {
-                return { ...result._doc, _id: result._doc._id.toString() };
-              })
-              .catch((err) => {
-                throw err;
-              });
+        return User.findOne({ email: args.userInput.email })
+          .then((user) => {
+            if (user) {
+              throw new Error("User Exist, Please try another email");
+            } else {
+              return bcrypt
+                .hash(args.userInput.password, 12)
+                .then((hashPasssword) => {
+                  const user = new User({
+                    email: args.userInput.email,
+                    password: hashPasssword,
+                  });
+                  return user
+                    .save()
+                    .then((result) => {
+                      return {
+                        ...result._doc,
+                        password: null,
+                        _id: result._doc._id.toString(),
+                      };
+                    })
+                    .catch((err) => {
+                      throw err;
+                    });
+                })
+                .catch((err) => {
+                  throw err;
+                });
+            }
           })
           .catch((err) => {
             throw err;
