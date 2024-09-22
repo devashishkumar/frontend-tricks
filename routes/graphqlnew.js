@@ -6,6 +6,44 @@ var router = express.Router();
 const Event = require("./../models/event");
 const User = require("./../models/user");
 
+/**
+ * @param userId userid
+ * @returns user details by id
+ */
+const user = (userId) => {
+  return User.findById(userId)
+    .then((user) => {
+      return {
+        ...user._doc,
+        _id: user.id,
+        createdEvents: events.bind(this, user._doc.createdEvents),
+      };
+    })
+    .catch((err) => {
+      throw err;
+    });
+};
+
+/**
+ * @param eventIds event id
+ * @returns get events
+ */
+const events = (eventIds) => {
+  return Event.find({ _id: { $in: eventIds } })
+    .then((events) => {
+      return events.map((event) => {
+        return {
+          ...event._doc,
+          _id: event.id,
+          creator: user.bind(this, event.creator),
+        };
+      });
+    })
+    .catch((err) => {
+      throw err;
+    });
+};
+
 router.use(
   "/graphql",
   graphqlHTTP({
@@ -49,16 +87,12 @@ router.use(
     rootValue: {
       events: () => {
         return Event.find()
-          .populate("creator")
           .then((events) => {
             return events.map((event) => {
               return {
                 ...event._doc,
                 _id: event.id.toString(),
-                creator: {
-                  ...event._doc.creator._doc,
-                  id: event._doc.creator.id,
-                },
+                creator: user.bind(this, event._doc.creator),
               };
             });
           })

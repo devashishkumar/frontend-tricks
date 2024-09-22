@@ -136,6 +136,7 @@ query {
 ## Create Event
 
 ```ts
+
 mutation {
   createEvent(eventInput: {title: "Title", description: "Description", price: 10.10, date: "2024-09-22T08:05:37.182Z"}) {
     title
@@ -212,6 +213,57 @@ query {
 }
 
 ```
+
+Input
+
+```ts
+
+query {
+  events {
+    creator {
+      email
+      _id
+      createdEvents {
+        _id
+        title
+        creator {
+          email
+        }
+      }
+    }
+  }
+}
+
+```
+
+Output
+
+```ts
+
+{
+  "data": {
+    "events": [
+      {
+        "creator": {
+          "email": "ashishmail@gmail.com",
+          "_id": "66efc1957c08bdea5be34454",
+          "createdEvents": [
+            {
+              "_id": "66efd4378fff88110bc21af9",
+              "title": "Title",
+              "creator": {
+                "email": "ashishmail@gmail.com"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+
+```
+
 ![find-user-details-from-events](https://github.com/user-attachments/assets/96c6edf3-625a-49d3-a719-ec77000644a1)
 
 
