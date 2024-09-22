@@ -133,6 +133,45 @@ query {
 
 ```
 
+## Create Event
+
+```ts
+mutation {
+  createEvent(eventInput: {title: "Title", description: "Description", price: 10.10}) {
+    title
+    description
+    _id
+    price
+    date
+  } 
+}
+
+```
+
+## Get Events
+
+```ts
+query {
+  events {
+    title
+    price
+  }
+}
+
+```
+
+## Create User
+
+```ts
+mutation {
+  createUser(userInput: {email: "ashishmail@gmail.com", password: "password12"}) {
+    email
+    password
+  }
+}
+
+```
+
 ![graphql-fetch](https://github.com/user-attachments/assets/a0c72e46-7ada-4759-9c66-65e0b8776eef)
 
 ## Add data to mongodb
@@ -146,6 +185,10 @@ query {
 ## Get data from mongodb along with GraphQL implementation
 
 ![get-records-from-db](https://github.com/user-attachments/assets/914d927e-6297-428d-aedb-922761e4e6ac)
+
+## Create User and save in mongodb along with GraphQL implementation
+
+![create-user](https://github.com/user-attachments/assets/df74fa75-bbe0-42ca-adca-1ef12ef7c583)
 
 ## Setup mongodb 7 in windows
 
