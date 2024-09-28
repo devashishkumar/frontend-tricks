@@ -342,7 +342,18 @@ Output
 }
 ```
 
+## Cancel Booking
 
+```ts
+mutation {
+  cancelBooking (bookingId: "bookingId") {
+    title
+    creator {
+      email
+    }
+  }
+}
+```
 
 ## Setup mongodb 7 in windows
 

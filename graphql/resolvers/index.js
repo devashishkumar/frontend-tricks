@@ -167,4 +167,19 @@ module.exports = {
       throw err;
     }
   },
+  cancelBooking: async (args) => {
+    try {
+      const booking = await Booking.findOne({ _id: args.eventId }).populate('event');
+      const event = {
+        ...booking.event._doc,
+        _id: booking.event.id,
+        creator: user.bind(this, booking.event._doc.creator)
+      };
+      await Booking.deleteOne({ _id: args.eventId });
+      return event;
+      
+    } catch (err) {
+      throw err;
+    }
+  },
 };
