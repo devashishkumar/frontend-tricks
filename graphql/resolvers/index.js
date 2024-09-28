@@ -1,6 +1,9 @@
 const bcrypt = require("bcryptjs");
 const Event = require("./../../models/event");
 const User = require("./../../models/user");
+const Booking = require("./../../models/booking");
+
+const USERID = "66efc1957c08bdea5be34454";
 
 /**
  * @param userId userid
@@ -57,13 +60,29 @@ module.exports = {
       throw err;
     }
   },
+  bookings: async (args) => {
+    try {
+      const bookings = await Booking.find();
+      return bookings.map((booking) => {
+        return {
+          ...booking._doc,
+          _id: booking.id,
+          createdAt: new Date(booking._doc.createdAt).toISOString(),
+          updatedAt: new Date(booking._doc.updatedAt).toISOString(),
+        };
+      });
+    } catch (err) {
+      throw err;
+    }
+  },
+
   createEvent: async (args) => {
     const event = new Event({
       title: args.eventInput.title,
       description: args.eventInput.description,
       price: +args.eventInput.price,
       date: new Date(args.eventInput.date),
-      creator: "66efc1957c08bdea5be34454",
+      creator: USERID,
     });
     let createdEvent;
     // now saving to mongodb database
@@ -75,7 +94,7 @@ module.exports = {
         date: new Date(result._doc.date).toISOString(),
         creator: user.bind(this, result._doc.creator),
       };
-      const creatorId = await User.findById("66efc1957c08bdea5be34454");
+      const creatorId = await User.findById(USERID);
       if (!creatorId) {
         throw new Error("User not found.");
       }
@@ -105,6 +124,24 @@ module.exports = {
           _id: result._doc._id.toString(),
         };
       }
+    } catch (err) {
+      throw err;
+    }
+  },
+  createBooking: async (args) => {
+    try {
+      const fetchEvent = await Event.findOne({ _id: args.eventId });
+      const booking = new Booking({
+        user: USERID,
+        event: fetchEvent,
+      });
+      const result = await booking.save();
+      return {
+        ...result._doc,
+        _id: result.id.toString(),
+        createdAt: new Date(result._doc.createdAt).toISOString(),
+        updatedAt: new Date(result._doc.updatedAt).toISOString(),
+      };
     } catch (err) {
       throw err;
     }

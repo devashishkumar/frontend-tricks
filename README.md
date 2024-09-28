@@ -265,6 +265,35 @@ Output
 
 ![find-user-details-from-events](https://github.com/user-attachments/assets/96c6edf3-625a-49d3-a719-ec77000644a1)
 
+## Create Booking
+
+Input
+
+```ts
+mutation {
+  createBooking(eventId: "66eff777a4d1d1c3d8a407b7" ) {
+    _id
+    createdAt
+  }
+}
+```
+
+Output
+
+```ts
+{
+  "data": {
+    "createBooking": {
+      "_id": "66f7cc2406f8a13ee7ee0623",
+      "createdAt": "2024-09-28T09:28:04.696Z"
+    }
+  }
+}
+```
+
+![create-booking](https://github.com/user-attachments/assets/3718c817-d8a6-4579-b776-21f40a43a551)
+
+
 
 ## Setup mongodb 7 in windows
 
