@@ -274,6 +274,9 @@ mutation {
   createBooking(eventId: "66eff777a4d1d1c3d8a407b7" ) {
     _id
     createdAt
+    user {
+      email
+    }
   }
 }
 ```
@@ -284,14 +287,60 @@ Output
 {
   "data": {
     "createBooking": {
-      "_id": "66f7cc2406f8a13ee7ee0623",
-      "createdAt": "2024-09-28T09:28:04.696Z"
+      "_id": "66f7ceec9c9e4006b1c99e97",
+      "createdAt": "2024-09-28T09:39:56.412Z",
+      "user": {
+        "email": "ashishmail@gmail.com"
+      }
     }
   }
 }
 ```
 
 ![create-booking](https://github.com/user-attachments/assets/3718c817-d8a6-4579-b776-21f40a43a551)
+
+## Get Booking
+
+Input
+
+```ts
+query {
+  bookings {
+    createdAt
+    event {
+      title
+      creator {
+        _id
+        createdEvents {
+          _id
+          title
+        }
+      }
+    }
+  }
+}
+```
+
+Output
+
+```ts
+{
+  "data": {
+    "bookings": [
+      {
+        "createdAt": "2024-09-28T09:23:58.294Z",
+        "event": {
+          "title": "Title",
+          "creator": {
+            "_id": "66efc1957c08bdea5be34454",
+            "createdEvents": null
+          }
+        }
+      }
+    ]
+  }
+}
+```
 
 
 

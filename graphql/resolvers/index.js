@@ -6,6 +6,23 @@ const Booking = require("./../../models/booking");
 const USERID = "66efc1957c08bdea5be34454";
 
 /**
+ * @param eventId event id
+ * @returns get event by event id
+ */
+const singleEvent = async (eventId) => {
+  try {
+    const event = await Event.findById(eventId);
+    return {
+      ...event._doc,
+      _id: event.id,
+      createdEvents: events.bind(this, event.createdEvents),
+    };
+  } catch (err) {
+    throw err;
+  }
+};
+
+/**
  * @param userId userid
  * @returns user details by id
  */
@@ -67,6 +84,8 @@ module.exports = {
         return {
           ...booking._doc,
           _id: booking.id,
+          user: user.bind(this, booking._doc.user),
+          event: singleEvent.bind(this, booking._doc.event),
           createdAt: new Date(booking._doc.createdAt).toISOString(),
           updatedAt: new Date(booking._doc.updatedAt).toISOString(),
         };
@@ -139,6 +158,8 @@ module.exports = {
       return {
         ...result._doc,
         _id: result.id.toString(),
+        user: user.bind(this, result._doc.user),
+        event: singleEvent.bind(this, result._doc.event),
         createdAt: new Date(result._doc.createdAt).toISOString(),
         updatedAt: new Date(result._doc.updatedAt).toISOString(),
       };
