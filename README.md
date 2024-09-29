@@ -101,7 +101,7 @@ events {
 
 ### Mutation
 
-```html
+```ts
 
 mutation {
   createEvent(eventInput: {title: "Title", description: "Description", price: 10.10}) {
