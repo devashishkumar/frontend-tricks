@@ -358,6 +358,36 @@ mutation {
 }
 ```
 
+## Authentication
+
+![authentication](https://github.com/user-attachments/assets/141b07f6-c24c-4435-bb1f-7a6ee1231a99)
+
+Input
+
+```ts
+query {
+  login(email: "ashishmail@gmail.com", password: "password12") {
+    userId
+    token
+    tokenExpiration
+  }
+}
+```
+
+Output
+
+```ts
+{
+  "data": {
+    "login": {
+      "userId": "66efc1957c08bdea5be34454",
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NmVmYzE5NTdjMDhiZGVhNWJlMzQ0NTQiLCJlbWFpbCI6ImFzaGlzaG1haWxAZ21haWwuY29tIiwiaWF0IjoxNzI3NTkyNDczLCJleHAiOjE3Mjc1OTYwNzN9.9mA0Eco7nrye29U-uSrDE2sRcq4Qs5cWaIqELcuJEy4",
+      "tokenExpiration": 1
+    }
+  }
+}
+```
+
 ## Setup mongodb 7 in windows
 
 - mongo commands are not working in CLI in case mongodb 6 or greater installed. We need to install mongosh CLI using this url. [mongosh windows installer](https://www.mongodb.com/try/download/shell)
