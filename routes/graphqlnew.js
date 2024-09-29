@@ -5,7 +5,9 @@ var router = express.Router();
 const graphQlSchema = require("./../graphql/schema/index");
 const graphQlResolvers = require("./../graphql/resolvers/index");
 
+const isAuth = require("./../middlewares/is-auth");
 
+router.use(isAuth);
 router.use(
   "/graphql",
   graphqlHTTP({
