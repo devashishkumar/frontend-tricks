@@ -119,7 +119,7 @@ mutation {
 
 ### Fetch
 
-```html
+```ts
 
 query {
   events {
@@ -144,6 +144,9 @@ mutation {
     _id
     price
     date
+    creator {
+      email
+    }
   } 
 }
 
