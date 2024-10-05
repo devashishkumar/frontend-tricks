@@ -18,6 +18,16 @@ var indexdbRouter = require("./routes/indexdb");
 
 var app = express();
 
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(200);
+  }
+  next();
+});
+
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -36,7 +46,7 @@ app.use("/users", usersRouter);
 app.use("/security", securityRouter);
 app.use("/api", restApi);
 app.use("/graphql", graphQl);
-app.use("/graphqlnew", graphQlNew);
+app.use("/graphqlapi", graphQlNew);
 app.use("/serverevent", serverEvent);
 app.use("/cookie", cookieRouter);
 app.use("/indexdb", indexdbRouter);

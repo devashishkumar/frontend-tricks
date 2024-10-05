@@ -598,3 +598,9 @@ mongoose
 
 How MongoDB Atlas works. Please refer to this YouTube Video URL.
 [Advance MongoDB](https://www.youtube.com/watch?v=39DqOhkyt1I)
+
+## Frontend
+
+Create frontend application in angular to consume graphql api's.
+
+- Create auth component and consume login and signup api.
