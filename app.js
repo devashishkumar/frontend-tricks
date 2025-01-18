@@ -15,6 +15,7 @@ var graphQlNew = require("./routes/graphqlnew");
 var serverEvent = require("./routes/serverevents");
 var cookieRouter = require("./routes/cookie");
 var indexdbRouter = require("./routes/indexdb");
+var cachingRouter = require("./routes/caching");
 
 var app = express();
 
@@ -57,6 +58,7 @@ app.use("/graphqlapi", graphQlNew);
 app.use("/serverevent", serverEvent);
 app.use("/cookie", cookieRouter);
 app.use("/indexdb", indexdbRouter);
+app.use("/caching", cachingRouter);
 
 // mongodb connect from mongodb atlas (cloud)
 

@@ -604,3 +604,9 @@ How MongoDB Atlas works. Please refer to this YouTube Video URL.
 Create frontend application in angular to consume graphql api's.
 
 - Create auth component and consume login and signup api.
+
+### Caching
+
+```sh
+1. Service Worker
+```

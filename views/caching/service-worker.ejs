@@ -1,0 +1,19 @@
+<div class="container">
+  <img src="/images/authentication.png" height="150px" width="150px" />
+</div>
+
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker
+      .register("/javascripts/service-worker.js")
+      .then((response) => {
+        console.log(
+          "Service Worker registered with scope:",
+          response.scope
+        );
+      })
+      .catch((error) => {
+        console.error("Service Worker registration failed:", error);
+      });
+  }
+</script>
