@@ -19,6 +19,7 @@ var indexdbRouter = require("./routes/indexdb");
 var app = express();
 
 app.use((req, res, next) => {
+  res.setHeader('Cache-Control', 'public, max-age=86400');
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
@@ -33,12 +34,14 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 var mongoose = require("mongoose");
 
+
 app.use(bodyParser.json());
 app.use(ejsLayouts);
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+// remove etag, cacheControl and lastModified headers
 app.use(express.static(path.join(__dirname, 'public'), {
   etag: true,
   cacheControl: false,
