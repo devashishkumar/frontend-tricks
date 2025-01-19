@@ -8,7 +8,6 @@ self.addEventListener("install", (event) => {
 });
 
 self.addEventListener("activate", (e) => {
-  // Clean up useless cache
   e.waitUntil(
     caches.keys().then((keyList) => {
       return Promise.all(
